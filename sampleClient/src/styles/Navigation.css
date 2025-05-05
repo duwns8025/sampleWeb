@@ -1,0 +1,83 @@
+.nav {
+  color: white;
+  position: relative;
+}
+
+.nav-wrapper {
+  position: relative;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  position: relative;
+}
+
+.nav-item {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.nav-item.selected {
+  background-color: #555; /* 선택된 메뉴의 배경색 */
+}
+
+/* 드롭다운 */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: black;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.dropdown-inner {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  gap: 0; /* 여백 간격 제거 */
+}
+
+.dropdown-column {
+  display: flex;
+  flex: 1; /* 균등 정렬 */
+  flex-direction: column;
+  padding: 0 10px; /* 좌우 패딩 추가 (간격 조정) */
+  text-align: center; /* 텍스트 중간 정렬 */
+}
+
+.dropdown-column h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.dropdown-column p {
+  font-size: 0.9rem;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.dropdown-column p:hover {
+  text-decoration: underline;
+}
+
+.dropdown-column.highlight {
+  background-color: #f0f0f0; /* 선택된 항목 강조 */
+  border-radius: 8px;
+}

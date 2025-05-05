@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Backend",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "D:/workspace/sampleWeb/sampleBackend/server.js",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--inspect-brk=9229"],
+      "port": 9229
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Frontend",
+      "url": "http://localhost:3000",
+      "webRoot": "D:/workspace/sampleWeb/sampleClient",
+      "sourceMaps": true,
+      "preLaunchTask": "start-frontend"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Both",
+      "configurations": ["Launch Backend", "Launch Frontend"]
+    }
+  ]
+}
