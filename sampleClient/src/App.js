@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';  // Routes로 변경
-import HomePage from './pages/HomePage';
+import MainPage from './pages/main/MainPage';
 import AboutPage from './pages/AboutPage';
 import SignupPage from './pages/SignupPage';
 import './styles/Global.css';  // 전역 스타일
@@ -14,7 +14,7 @@ function App() {
       
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />  {/* element 속성 사용 */}
+          <Route path="/" element={<MainPage />} />  {/* element 속성 사용 */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
