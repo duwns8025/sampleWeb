@@ -1,4 +1,3 @@
-// DropdownContent.jsx
 import React from 'react';
 import '../styles/Navigation.css';
 
@@ -12,14 +11,15 @@ const menuGroups = {
   news: ['Press Releases', 'Media Resources', 'Events', 'Announcements', 'Newsroom'],
 };
 
-const DropdownContent = ({ selectedMenu }) => {
+const DropdownContent = ({ selectedMenu, isVisible, setSelectedMenu }) => {
   return (
-    <div className="dropdown">
+    <div className={`dropdown ${isVisible ? 'show' : ''}`}>
       <div className="dropdown-inner">
         {Object.entries(menuGroups).map(([menuKey, items]) => (
           <div
             key={menuKey}
             className={`dropdown-column ${menuKey === selectedMenu ? 'highlight' : ''}`}
+            onMouseEnter={() => setSelectedMenu(menuKey)} // ✅ 핵심
           >
             <h4>{menuKey.toUpperCase()}</h4>
             {items.map((item, idx) => (

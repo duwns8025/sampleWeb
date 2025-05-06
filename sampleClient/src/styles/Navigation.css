@@ -1,3 +1,4 @@
+/* 네비게이션 바 */
 .nav {
   color: white;
   position: relative;
@@ -25,10 +26,33 @@
   flex: 1;
   text-align: center;
   padding: 20px 0;
+  position: relative;
+  color: white;
+  transition: color 0.3s ease;
 }
 
+/* 마우스 오버 또는 선택된 항목 - 폰트 색상 변경 + 밑줄 */
+.nav-item:hover,
 .nav-item.selected {
-  background-color: #555; /* 선택된 메뉴의 배경색 */
+  color: #c0a16b; /* 원하는 강조 색상 */
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background-color: #c0a16b;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.nav-item:hover::after,
+.nav-item.selected::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 /* 드롭다운 */
@@ -42,6 +66,16 @@
   z-index: 999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-inner {
@@ -61,23 +95,41 @@
   text-align: center; /* 텍스트 중간 정렬 */
 }
 
+/* 드롭다운 제목 */
 .dropdown-column h4 {
   font-size: 1rem;
   margin-bottom: 10px;
   color: #333;
+  transition: color 0.3s ease;
 }
 
+/* 드롭다운 항목 */
 .dropdown-column p {
   font-size: 0.9rem;
   margin: 4px 0;
   cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
 }
 
 .dropdown-column p:hover {
-  text-decoration: underline;
+  color: #c0a16b;
+  text-decoration: none;
 }
 
-.dropdown-column.highlight {
-  background-color: #f0f0f0; /* 선택된 항목 강조 */
-  border-radius: 8px;
+/* 선택된 항목 강조는 배경색 제거하고 생략 가능 */
+.dropdown-column.highlight h4,
+.dropdown-column.highlight p {
+  color: #c0a16b;/* nav-item 강조 색상과 동일 */
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
+
+/* 마우스 커서가 올라간 항목에만 더 강한 효과 */
+.dropdown-column.highlight p:hover {
+  color: #a7894a; /* 더 진한 톤 */
+  text-decoration: underline;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+

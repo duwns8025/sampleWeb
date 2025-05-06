@@ -13,6 +13,26 @@ const MainPage = () => {
         <div>
             <MainBanner />
             <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+
+            <h2>This is the main page content.</h2><h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            <h2>This is the main page content.</h2>
+            
         </div>
     );
 };

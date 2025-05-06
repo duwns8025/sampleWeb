@@ -1,60 +1,92 @@
-/* 전체 헤더 영역 */
-.header {
-  background-color: #000;       /* 검정 배경 */
-  color: white;                 /* 흰 글자 */
-  padding: 0;
-  font-family: sans-serif;
-}
+  /* 전체 헤더 영역 */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 1); /* 기본은 불투명 */
+    color: white;
+    padding: 0;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  /* 최상단일 때 반투명하게 */
+  .header.transparent {
+    background-color: rgba(0, 0, 0, 0); /* 투명하게 */
+    box-shadow: none; /* 그림자 제거로 더 부드러운 느낌 */
+  }
 
-/* 헤더 내부 정렬 wrapper */
-.header-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  height: 60px;
-}
 
+  /* 헤더 내부 정렬 wrapper */
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
 
-/* 왼쪽은 왼쪽 정렬 */
-.header-left {
-  text-align: left;
-  flex: 1;
-}
+  .header-wrapper.hide {
+    height: 0;                 /* 공간 제거 */
+    padding: 0 20px;           /* 위아래 패딩 제거 (좌우는 유지) */
+    opacity: 0;
+    transform: translateY(-30%) scaleY(0.9); /* 자연스러운 위로 사라짐 느낌 */
+    pointer-events: none;
+  }
 
-/* 가운데는 가운데 정렬 */
-.header-center {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  flex: 2;
-}
+  /* 왼쪽은 왼쪽 정렬 */
+  .header-left {
+    text-align: left;
+    flex: 1;
+  }
 
-/* 오른쪽은 오른쪽 정렬 */
-.header-right {
-  text-align: right;
-  flex: 1;
-}
+  /* 가운데는 가운데 정렬 */
+  .header-center {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    flex: 2;
+  }
 
-/* 네비게이션 아래쪽에 위치하도록 분리되는 느낌 유지 */
-.Navigation {
-  border-top: 1px solid #444;
-}
+  /* 오른쪽은 오른쪽 정렬 */
+  .header-right {
+    text-align: right;
+    flex: 1;
+  }
 
-.auth-links {
-  text-align: right;
-  font-size: 14px;
-}
+  /* 네비게이션 아래쪽에 위치하도록 분리되는 느낌 유지 */
+  .Navigation {
+    border-top: 1px solid #444;
+  }
 
-.auth-links a {
-  color: white;
-  text-decoration: none;
-  margin: 0 5px;
-  transition: color 0.2s ease;
-  cursor: pointer;
-}
+  .auth-links {
+    text-align: right;
+    font-size: 14px;
+  }
 
-.auth-links a:hover {
-  color: #ccc;
-  text-decoration: underline;
-}
+  .auth-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .auth-links a:hover {
+    color: #ccc;
+    text-decoration: underline;
+  }
+
+  .logo {
+    width: 100px;  /* 로고의 너비 */
+    height: 50px;  /* 로고의 높이 */
+    background-image: url('../image/logo_default.png');  /* 백그라운드 이미지 */
+    background-size: contain;  /* 이미지 비율을 유지하며 크기 맞추기 */
+    background-repeat: no-repeat;  /* 이미지 반복 안 함 */
+    cursor: pointer;  /* 클릭할 수 있는 형태로 커서 변경 */
+  }
