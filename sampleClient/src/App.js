@@ -11,7 +11,6 @@ function App() {
   return (
     <Router>
       <Header />
-      
       <main>
         <Routes>
           <Route path="/" element={<MainPage />} />  {/* element 속성 사용 */}
@@ -19,7 +18,6 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </main>
-      
       <Footer />
     </Router>
   );

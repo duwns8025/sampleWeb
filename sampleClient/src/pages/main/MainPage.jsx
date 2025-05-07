@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../../styles/Content.css';
 import MainBanner from './MainBanner';
+import MainContents from './MainContents';
 
 const images = [
   "/images/slide_img01.jpg",
@@ -12,26 +13,7 @@ const MainPage = () => {
     return (
         <div>
             <MainBanner />
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-
-            <h2>This is the main page content.</h2><h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
-            <h2>This is the main page content.</h2>
+            <MainContents/>
             
         </div>
     );
