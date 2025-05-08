@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/Content.css";
 
 const spaceData = [
@@ -25,10 +25,42 @@ const spaceData = [
 ];
 
 const MainContents = () => {
+  const cardRefs = useRef([]);
+  const [visibleCards, setVisibleCards] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index);
+            setVisibleCards((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 } // 20% 보이면 감지
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      cardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   return (
     <div className="main-content-container">
       {spaceData.map((space, index) => (
-        <div key={index} className="space-card">
+        <div
+          key={index}
+          ref={(el) => (cardRefs.current[index] = el)}
+          data-index={index}
+          className={`space-card ${visibleCards.includes(index) ? "show" : ""}`}
+        >
           <img src={space.image} alt={space.title} />
           <div className="overlay">
             <div className="description">{space.description}</div>

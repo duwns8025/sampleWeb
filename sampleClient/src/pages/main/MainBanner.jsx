@@ -7,7 +7,7 @@ const images = [
   "/images/slide_img03.jpg",
 ];
 
-const MainPage = () => {
+const MainBanner = () => {
   const [current, setCurrent] = useState(0);
 
   // 자동 슬라이드 (3초마다)
@@ -70,4 +70,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default MainBanner;

@@ -9,14 +9,61 @@
 }
 
 .nav-list {
+  flex: 1;
   display: flex;
-  list-style: none;
-  justify-content: space-evenly;
-  margin: 0 auto;
+  justify-content: center;
+  gap: 20px; /* 간격 좁힘 */
   padding: 0;
-  max-width: 1200px;
-  position: relative;
+  margin: 0;
+  list-style: none;
 }
+/* 네이게이션 상위 헤더영역의 로고,auth  -> 추후에 개선필요하지않을까?(현재 헤더,네비게이션 두번선언) */
+.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 헤더 숨김 상태일 때 마진 제거해서 꽉 채움 */
+.nav-flex.compact {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 10px; /* 여백 최소화 */
+}
+
+.nav-logo {
+  width: 80px;
+  height: 40px;
+  background-image: url('../image/logo_default.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.nav-auth {
+  font-size: 14px;
+  white-space: nowrap;
+  text-align: right;
+  margin-left: 10px;
+}
+
+.nav-auth a {
+  color: white;
+  text-decoration: none;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-auth a:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+/* ---------------------------------------------- */
 
 .nav-item {
   font-weight: bold;
@@ -123,7 +170,7 @@
   color: #c0a16b;/* nav-item 강조 색상과 동일 */
   font-weight: bold;
   transition: color 0.3s ease, text-decoration 0.3s ease;
-}
+} 
 
 /* 마우스 커서가 올라간 항목에만 더 강한 효과 */
 .dropdown-column.highlight p:hover {

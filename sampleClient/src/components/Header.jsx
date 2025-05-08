@@ -6,8 +6,9 @@ import '../styles/Header.css';
 const Header = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true); // 추가: 최상단 여부
-  const [isHovered, setIsHovered] = useState(false); 
+  const [isAtTop, setIsAtTop] = useState(true);// 추가: 최상단 여부
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // 👈 추가
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -24,6 +25,10 @@ const Header = () => {
     navigate('/');
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header
       className={`header ${isAtTop && !isHovered ? 'transparent' : ''}`} // 👈 조건 수정
@@ -36,13 +41,24 @@ const Header = () => {
         </div>
         <div className="header-center">사이트 이름</div>
         <div className="header-right">
-          <div className="auth-links">
+          <div className="auth-links desktop-only">
             <a onClick={() => navigate('/login')}>로그인</a> |{' '}
             <a onClick={() => navigate('/signup')}>회원가입</a>
           </div>
+          <div className="hamburger mobile-only" onClick={toggleMobileMenu}>
+            ☰
+          </div>
         </div>
       </div>
-      <Navigation />
+
+      {/* 모바일 메뉴 */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu mobile-only">
+          <a onClick={() => navigate('/login')}>로그인</a>
+          <a onClick={() => navigate('/signup')}>회원가입</a>
+        </div>
+      )}
+      <Navigation className="desktop-only" showHeaderItems={isScrolled} />
     </header>
   );
 };

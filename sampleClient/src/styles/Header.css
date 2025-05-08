@@ -90,3 +90,55 @@
     background-repeat: no-repeat;  /* 이미지 반복 안 함 */
     cursor: pointer;  /* 클릭할 수 있는 형태로 커서 변경 */
   }
+
+
+
+  /* ------반응형 적용-------- */
+  
+  /* 햄버거 메뉴 */
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+  padding: 5px 10px;
+  color: white;
+}
+
+/* 모바일 전용 메뉴 */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+/* 화면 크기에 따른 표시 제어 */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+}

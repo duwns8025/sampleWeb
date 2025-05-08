@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Navigation.css';
 import DropdownContent from './DropdownContent';
+import { useNavigate } from 'react-router-dom';
 
-const Navigation = () => {
+const Navigation = ({ className = '', showHeaderItems }) => {
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [visibleMenu, setVisibleMenu] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (selectedMenu) {
@@ -15,10 +17,7 @@ const Navigation = () => {
     }
   }, [selectedMenu]);
 
-  const menus = [
-    'about', 'brands', 'culture', 'commitments', 'investors', 'careers', 'news',
-  ];
-
+  const menus = ['about', 'brands', 'culture', 'commitments', 'investors', 'careers', 'news'];
   const displayNames = {
     about: 'ABOUT US',
     brands: 'BRANDS',
@@ -30,19 +29,32 @@ const Navigation = () => {
   };
 
   return (
-    <div className="nav-wrapper" onMouseLeave={() => setSelectedMenu(null)}>
+    <div className={`nav-wrapper ${className}`} onMouseLeave={() => setSelectedMenu(null)}>
       <nav className="nav">
-        <ul className="nav-list">
-          {menus.map((menu) => (
-            <li
-              key={menu}
-              className={`nav-item ${selectedMenu === menu ? 'selected' : ''}`}
-              onMouseEnter={() => setSelectedMenu(menu)}
-            >
-              {displayNames[menu]}
-            </li>
-          ))}
-        </ul>
+        <div className={`nav-flex ${showHeaderItems ? 'compact' : ''}`}>
+          {showHeaderItems && (
+            <div className="nav-logo" onClick={() => navigate('/')}></div>
+          )}
+
+          <ul className="nav-list">
+            {menus.map((menu) => (
+              <li
+                key={menu}
+                className={`nav-item ${selectedMenu === menu ? 'selected' : ''}`}
+                onMouseEnter={() => setSelectedMenu(menu)}
+              >
+                {displayNames[menu]}
+              </li>
+            ))}
+          </ul>
+
+          {showHeaderItems && (
+            <div className="nav-auth">
+              <a onClick={() => navigate('/login')}>로그인</a> |{' '}
+              <a onClick={() => navigate('/signup')}>회원가입</a>
+            </div>
+          )}
+        </div>
       </nav>
       {visibleMenu && (
         <DropdownContent
